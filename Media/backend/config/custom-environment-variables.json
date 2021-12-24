@@ -1,0 +1,5 @@
+{
+    "jwtPrivateKey":"media_jwtPrivateKey",
+    "db":"media_db",
+    "mailPass":"media_mailPass"
+}
