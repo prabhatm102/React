@@ -1,7 +1,7 @@
 const error = require("../middleware/error");
 const auth = require("../middleware/auth");
-const { isLogin } = require("../middleware/isLogin");
-const { isVerify } = require("../middleware/isVerify");
+// const { isLogin } = require("../middleware/isLogin");
+// const { isVerify } = require("../middleware/isVerify");
 
 const express = require("express");
 const cookieParser = require("cookie-parser");
@@ -10,7 +10,9 @@ const cors = require("cors");
 
 const users = require("../routes/user");
 const login = require("../routes/auth");
-const { User } = require("../model/user");
+const post = require("../routes/post");
+const comment = require("../routes/comment");
+const conversation = require("../routes/conversation");
 
 const path = require("path");
 
@@ -24,6 +26,9 @@ module.exports = function (app) {
   // API
   app.use("/api/users", users);
   app.use("/api/logins", login);
+  app.use("/api/posts", post);
+  app.use("/api/comments", comment);
+  app.use("/api/conversations", conversation);
 
   //Templates
   // Before Login

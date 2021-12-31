@@ -25,7 +25,7 @@ const NavBar = ({ user }) => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
+          <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <NavLink className="nav-link" to="/">
                 Home
@@ -54,22 +54,61 @@ const NavBar = ({ user }) => {
                 </li>
               </React.Fragment>
             )}
-
-            {user && (
-              <React.Fragment>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/profile">
+          </ul>
+          {user && (
+            <ul className="navbar-nav ms-auto">
+              <li className="nav-item my-2">
+                <NavLink className="nav-link" to="/conversation">
+                  Chats
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <div className="dropdown ">
+                  <NavLink
+                    className="nav-link dropdown-toggle"
+                    to="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <img
+                      src={
+                        user && process.env.REACT_APP_USER_IMAGE_URL + user.file
+                      }
+                      className="img-fluid rounded-start img-thumbnail m-2"
+                      alt="userDetails"
+                      height="25"
+                      width="25"
+                    />
                     {user.name}
                   </NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/logout">
-                    Logout
-                  </NavLink>
-                </li>
-              </React.Fragment>
-            )}
-          </ul>
+
+                  <ul
+                    className="dropdown-menu w-25"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <li className="nav-item">
+                      <NavLink className="nav-link  text-center" to="/profile">
+                        My Profile
+                      </NavLink>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li className="nav-item">
+                      <NavLink
+                        className="nav-link text-white text-center bg-danger"
+                        to="/logout"
+                      >
+                        Logout
+                      </NavLink>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </nav>

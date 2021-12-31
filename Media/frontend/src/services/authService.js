@@ -1,4 +1,4 @@
-import http from "./htttpServices";
+import http from "./httpServices";
 import jwtDecode from "jwt-decode";
 
 const apiEndpoint = "/logins";

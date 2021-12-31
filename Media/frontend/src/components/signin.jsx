@@ -4,7 +4,7 @@ import Joi from "joi-browser";
 import React, { useState } from "react";
 import Input from "./common/input";
 
-const Signin = () => {
+const Signin = (props) => {
   const [data, setData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
 
@@ -54,7 +54,8 @@ const Signin = () => {
   const doSubmit = async () => {
     try {
       await auth.login(data.email, data.password);
-      window.location = "/";
+      const { state } = props.location;
+      window.location = state ? state.from.pathname : "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errorMessage = { ...errors };
